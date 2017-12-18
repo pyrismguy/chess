@@ -8,4 +8,4 @@ add_executable(chess ${SOURCE_FILES})       # Add executable target with source 
 target_link_libraries(chess LINK_PUBLIC engine)
 target_include_directories(chess PUBLIC ${INCLUDE_DIR})
 
-configure_file(data/scene.xml ${PROJECT_BINARY_DIR}/data/scene.xml)
+configure_file(data/scene.json ${PROJECT_BINARY_DIR}/data/scene.json)
