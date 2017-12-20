@@ -8,6 +8,9 @@ private:
                 rotation,
                 scale;
 public:
+    Transform();
+    Transform(const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec3 &scl);
+
     inline glm::vec3 getPos() const {
         return position;
     }
@@ -29,9 +32,3 @@ public:
     }
 };
 
-class Object {
-protected:
-    Transform transform;
-public:
-    virtual ~Object()=default;
-};

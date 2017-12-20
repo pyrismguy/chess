@@ -1,6 +1,5 @@
 #include "window.h"
 #include <cstdlib>
-#include <cstdio>
 
 Window::Window(const char* title, int width, int height) : title(title), width(width), height(height)
 {
@@ -26,9 +25,7 @@ Window::Window(const char* title, int width, int height) : title(title), width(w
         SDL_Log("Window creation failed: %s\n", SDL_GetError());
         exit(1);
     }
-
     context = SDL_GL_CreateContext(window);
-
 }
 
 Window::~Window()

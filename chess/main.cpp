@@ -1,30 +1,24 @@
-#define WIDTH 640
-#define HEIGHT 480
-
-#include "../src/window.h"
+#include <cstdio>
+#include "../src/scene.h"
 #include "../src/image.h"
 #include "../src/renderer.h"
 
 extern "C" int main(int argc, char** argv)
 {
-    Window window = Window("Chess", WIDTH, HEIGHT);
+    FILE* log = freopen("log.txt", "w", stdout);
+
+    Scene scene = Scene("data/scene.json");
+    printf("Successfully loaded scene!\nname : \"%s\"\ndesc : \"%s\"\n",
+           scene.getName(), scene.getDescription());
 
     Image img = Image();
-    Scene scene = Scene("data/scene.json");
-    Renderer *renderer = Renderer::getInstance();
 
+    Renderer *renderer = Renderer::getInstance();
     renderer->render(img, scene);
 
-    img.saveData("out.bmp");
+    img.saveData("demo.bmp");
 
-    while(!window.isClosed()){
-        SDL_Event event;
-        while(SDL_PollEvent(&event)){
-            if (event.type==SDL_QUIT){
-                window.close();
-            }
-        }
-        window.refresh();
-    }
+    fclose(log);
     return 0;
+
 }

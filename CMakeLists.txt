@@ -12,9 +12,9 @@ set(SOURCE_FILES
         src/ray.h
         src/ray.cpp
         src/stb_image_write.h
-        src/object.h
-        src/camera.cpp
-        src/camera.h src/renderer.cpp src/renderer.h src/image.h src/image.cpp src/shapes/sphere.cpp)
+        src/objects/object.h
+        src/objects/camera.cpp
+        src/objects/camera.h src/renderer.cpp src/renderer.h src/image.h src/image.cpp src/shapes/sphere.cpp src/objects/object.cpp src/objects/transform.cpp src/objects/transform.h)
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/engine)
 
 add_library(engine STATIC ${SOURCE_FILES})
@@ -38,7 +38,8 @@ endif()
 
 set(INCLUDE_DIR ${INCLUDE_DIR}
         ${CMAKE_SOURCE_DIR}/deps/glm
-        ${CMAKE_SOURCE_DIR}/deps/stb)
+        ${CMAKE_SOURCE_DIR}/deps/stb
+        ${CMAKE_SOURCE_DIR}/deps/rapidjson/include)
 
 target_include_directories(engine PUBLIC ${INCLUDE_DIR})
 

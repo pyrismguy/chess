@@ -1,9 +1,10 @@
 #include "camera.h"
 
-PerspectiveCamera::PerspectiveCamera(const glm::vec3 &position, const glm::vec3 &forward, const glm::vec3 &up, float fov, float aspect)
-        : forward(glm::normalize(forward)), up(glm::normalize(up)), fov(fov), aspect(aspect){
+PerspectiveCamera::PerspectiveCamera(const Transform &transform, const glm::vec3 &forward, const glm::vec3 &up, float fov, float aspect)
+        : Camera(transform),
+          forward(glm::normalize(forward)), up(glm::normalize(up)), fov(fov), aspect(aspect) {
+
     right = glm::normalize(glm::cross(forward, up));
-    transform.setPos(position);
     h = tanf(fov);
     w = h * aspect;
 }

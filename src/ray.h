@@ -24,5 +24,5 @@ public:
      */
     glm::vec3 calculate(const float& t) const;
 
-    Ray& operator= (const Ray &other);
+    Ray& operator= (const Ray &other)=default;
 };

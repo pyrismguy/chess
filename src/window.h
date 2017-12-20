@@ -1,13 +1,14 @@
 #pragma once
 #include <SDL.h>
-#include <SDL_video.h>
 
 class Window {
+private:
     const char* title;
     int width, height;
     SDL_Window *window;
     SDL_GLContext context;
     bool closed;
+
 public:
     Window(const char* title, int width, int height);
     virtual ~Window();

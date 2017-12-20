@@ -1,19 +1,38 @@
 #pragma once
 
+#include <vector>
+
+#include "objects/object.h"
+#include "shapes/shape.h"
+#include "objects/camera.h"
+
+#define NAME_LENGTH 25
+#define DESC_LENGTH 255
+
 class Scene
 {
-    const char *title, *author;
-public:
-    /* the Scene class constructor can currently only parse from .xml files where the first tag is the root of the scene hierarchy.
-     * Make sure your xml file is properly structured if you are having errors loading/saving scenes.
-     */
-    Scene(const char *file);
-    virtual ~Scene()=default;
+private:
+    char *name, *desc;
+    std::vector<Shape*> shapes;
+    std::vector<Object*> objects;
 
-    inline const char *getTitle() const {
-        return title;
+    unsigned int mainCamIdx;
+
+public:
+    Scene(const char *file);
+    virtual ~Scene();
+
+    inline const char* getName() const {
+        return name;
     }
-    inline const char *getAuthor() const {
-        return author;
+    inline const char* getDescription() const {
+        return desc;
+    }
+    PerspectiveCamera* getMainCamera() const {
+        return static_cast<PerspectiveCamera*>(objects.at(mainCamIdx));
+    }
+
+    const std::vector<Shape*> getShapes() const {
+        return shapes;
     }
 };

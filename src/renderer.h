@@ -12,9 +12,10 @@ private:
     Renderer()=default;
     virtual ~Renderer()=default;
 
-    float trace(const Ray &r, const Shape &s) const;
-public:
+    Intersection traceScene(const Ray& ray, std::vector<Shape*> shapes) const;
+    float trace(const Ray &r, const Shape &shape) const;
 
+public:
     static Renderer* getInstance() {
         if (!sInstance) {
              sInstance = new Renderer();

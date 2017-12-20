@@ -10,6 +10,7 @@ enum STRIDE{
 struct rgb888_t {
     uint8_t r, g, b;
     rgb888_t() : r(0), g(0), b(0){};
+    rgb888_t(uint8_t r, uint8_t g, uint8_t b) : r(r), g(g), b(b){};
 };
 
 typedef rgb888_t Color; // TODO: change this for a less generalized name!
